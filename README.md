@@ -26,10 +26,13 @@ Then open `http://localhost:4173` in the browser.
 - Add a new building
 - Search, filter, and paginate 72 demo rooms
 - Open any room to review overall progress, trade progress, clashes, and recent activity
-- Trade View and Turner View for the selected room
+- Building and room dropdown selection at the top of the Tasks page
+- Matching Trade View and Turner View task workspaces
+- Open any trade to review its tasks and add a task directly to that trade
 - Mark a trade complete or reopen it
 - A completed trade is always shown at 100 percent
-- Add tasks and update task status
+- Add tasks, include an initial comment, and update task status
+- Open any task to review its comment thread and add more comments
 - Room progress recalculates from trade completion
 - Inspection dashboard with trade-level pass, fail, and not-inspected totals
 - Add inspections, change results, and record failure comments
