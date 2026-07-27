@@ -1,41 +1,66 @@
 # TradeSYNC
 
-TradeSYNC is a responsive construction coordination prototype based on the supplied mobile and tablet screen designs. It brings room readiness, trade completion, tasks, inspections, clashes, and constraints into one app.
+TradeSYNC is a working, responsive construction-coordination prototype built from the supplied screen designs. It combines room readiness, trade completion, tasks, inspections, clashes, and constraints in one installable web app.
 
-## What works in this version
+## Open the app
 
-- Home dashboard with building cards and project progress
-- Room list with status filtering and room detail navigation
-- Trade View and Turner View for each room
-- Trade partners can mark their scope complete or reopen it
-- Room progress recalculates when trade status changes
-- Tasks can be added and their status can be updated
-- Inspection summary and trade-level inspection records
-- Inspections can be added and marked Passed, Failed, or Not Inspected
-- Failed inspections can include a correction comment
-- Constraints can be added, filtered by priority, resolved, and reopened
-- Demo changes are saved in the browser with local storage
-- Responsive layout designed for phones, tablets, and desktop browsers
-- Installable web-app manifest
+No software installation or build step is required.
 
-## Run the app locally
+### Easiest option
 
-1. Install Node.js 18 or newer.
-2. Open a terminal in this project folder.
-3. Run `npm install`.
-4. Run `npm run dev`.
-5. Open the local address shown in the terminal.
+Open `index.html` in a modern browser.
 
-## Production build
+### Recommended local option
 
-Run:
+Running a small local web server enables the installable/offline features:
 
 ```bash
-npm run build
+python -m http.server 4173
 ```
 
-The finished static app will be created in the `dist` folder.
+Then open `http://localhost:4173` in the browser.
 
-## Important prototype note
+## Working features
 
-This first version uses sample data and saves updates only in the current browser. A production version should connect to company authentication, a shared database, file storage, push notifications, and role-based permissions.
+- Home dashboard with the supplied building imagery and project progress cards
+- Add a new building
+- Search, filter, and paginate 72 demo rooms
+- Open any room to review overall progress, trade progress, clashes, and recent activity
+- Trade View and Turner View for the selected room
+- Mark a trade complete or reopen it
+- A completed trade is always shown at 100 percent
+- Add tasks and update task status
+- Room progress recalculates from trade completion
+- Inspection dashboard with trade-level pass, fail, and not-inspected totals
+- Add inspections, change results, and record failure comments
+- Active and resolved constraints
+- Critical Path, Moderate, and Low priority filters
+- Add, resolve, and reopen constraints
+- Messages and notifications panels
+- Export all prototype data as JSON
+- Reset the app to its original demonstration data
+- Browser local-storage persistence
+- Responsive layouts for phones, tablets, and desktop browsers
+- Web-app manifest and offline application shell
+
+## How the prototype stores information
+
+Changes are saved in the browser on the device being used. They are not yet shared between different users or devices. The **More** page can export the current data or reset the prototype.
+
+A production version would normally add:
+
+- Company sign-in and role-based permissions
+- A shared cloud database
+- Photo, drawing, and attachment storage
+- Real-time updates and push notifications
+- Audit history and reporting
+- Integrations with existing project-management systems
+
+## Project files
+
+- `index.html` — app entry point
+- `css/` — responsive TradeSYNC interface styles
+- `js/` — screens, sample data, navigation, and interactions
+- `manifest.webmanifest` — installable web-app information
+- `sw.js` — offline application-shell cache
+- `assets/` — TradeSYNC icon and building images extracted from the supplied design references
