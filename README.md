@@ -31,7 +31,7 @@ Then open `http://localhost:4173` in the browser.
 - Interior and exterior locations maintain separate room lists unless the same location is deliberately added to both sections
 - Add locations and upload photos, plans, elevations, and other visual documentation
 - Add an interior room or exterior work area only to a matching location type
-- Remove a building from My Buildings, including its locally stored rooms and task workspaces
+- Remove a building from My Buildings, including its locally stored rooms, task workspaces, inspections, and constraints
 - Separate Interior and Exterior switches at the top of the Rooms page
 - Filter the selected section by wing/location, floor/level, and status
 - Search and paginate the selected Interior or Exterior room list
@@ -49,13 +49,18 @@ Then open `http://localhost:4173` in the browser.
 - Add tasks, include an initial comment, and update task status
 - Open any task to review its permanent comment thread and add more comments
 - Add optional images to task comments and initial task documentation
+- Choose a building and then a room/work area on the Inspections page
+- Inspection totals and trade records are limited to the selected building and room/work area
+- New inspections are permanently assigned to their selected building and room/work area
 - Inspection comments remain in the record after an inspection passes
 - Add optional images to inspection comments
+- Choose a building on the Constraints page
+- Constraints are building-wide records and are never assigned to an individual room
 - Constraint page grouped visually by Critical Path, Moderate, and Low priority
 - Active constraints remain in their priority section
-- Selecting Resolve moves the constraint into a dedicated Turner-blue Resolved section
+- Selecting Resolve moves the constraint into a dedicated Turner-blue Resolved section for that building
 - Reopening a resolved constraint moves it back to its active priority section
-- Click a constraint to open its description, images, comments, owner, and resolve-by date
+- Click a constraint to open its building, description, images, comments, owner, and resolve-by date
 - Add optional images while creating a constraint or adding a constraint comment
 - Constraints use Schedule, Resource, Coordination, Design, Material, or Access types; Clash is tracked separately
 - Add, resolve, and reopen constraints without deleting their documentation
@@ -77,6 +82,12 @@ Turner View confirmation is used for room progress shown outside the Tasks page.
 Tapping a building first asks the user to choose Interior or Exterior. The Rooms page then opens directly to that section. Interior and Exterior use separate location and room lists. The section switch is separate from the Wing / Location filter so a mobile user can change the broad building section first and then narrow the list by wing, floor, or status.
 
 A room is assigned to one specific location and appears only in that section. Locations with the same name are treated as separate records only when a user deliberately creates them in both sections.
+
+## Building records
+
+Constraints are assigned to a building and are not connected to a room. The Constraints page filters every active and resolved record by the selected building.
+
+Inspections are assigned to both a building and a room or exterior work area. Changing the building on the Inspections page changes the available room list and prevents inspection records from different buildings from being mixed together.
 
 ## Room overview behavior
 
