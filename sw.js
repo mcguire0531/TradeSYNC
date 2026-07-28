@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tradesync-v5';
+const CACHE_NAME = 'tradesync-v6';
 const APP_SHELL = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ const APP_SHELL = [
   './css/06-collaboration-updates.css',
   './css/07-project-areas-constraint-layout.css',
   './css/08-building-tabs-room-filters-resolved.css',
+  './css/09-mobile-building-room-flow.css',
   './js/01-foundation.js',
   './js/02-data-state.js',
   './js/03-shell-home.js',
@@ -41,6 +42,8 @@ const APP_SHELL = [
   './js/12a3-room-filters.js',
   './js/12a4-building-room-events.js',
   './js/12b-resolved-constraints.js',
+  './js/13a-mobile-building-flow.js',
+  './js/13b-mobile-room-list.js',
   './manifest.webmanifest',
   './assets/tradesync-icon.svg',
   './assets/building-riverside.jpg',

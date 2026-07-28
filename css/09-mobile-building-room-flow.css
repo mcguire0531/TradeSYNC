@@ -1,0 +1,442 @@
+/* Mobile-first building selection, room category filters, and trade metrics. */
+
+.building-card--mobile-flow .building-card__tap-hint {
+  display: block;
+  margin-top: 7px;
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.building-card__mobile-footer {
+  align-items: center;
+}
+
+.building-card__category-summary {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.building-category-pill {
+  display: inline-flex;
+  min-height: 30px;
+  padding: 6px 9px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 750;
+  white-space: nowrap;
+}
+
+.building-category-pill--interior {
+  color: #1639c8;
+  background: #edf1ff;
+}
+
+.building-category-pill--exterior {
+  color: #9b4300;
+  background: #fff0df;
+}
+
+.building-choice-header {
+  display: grid;
+  grid-template-columns: 82px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f8faff;
+}
+
+.building-choice-header img {
+  width: 82px;
+  height: 62px;
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.building-choice-header div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.building-choice-header strong,
+.building-choice-header span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.building-choice-header span {
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.building-choice-copy {
+  margin: 13px 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.building-section-choice {
+  display: grid;
+  gap: 10px;
+}
+
+.building-section-choice__button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 46px minmax(0, 1fr) 22px;
+  gap: 11px;
+  align-items: center;
+  min-height: 92px;
+  padding: 13px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--ink);
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+}
+
+.building-section-choice__button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow);
+}
+
+.building-section-choice__button--interior {
+  border-color: #bdcaff;
+  background: linear-gradient(135deg, #f3f5ff, #fff);
+}
+
+.building-section-choice__button--exterior {
+  border-color: #ffd0a3;
+  background: linear-gradient(135deg, #fff7ee, #fff);
+}
+
+.building-section-choice__icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.building-section-choice__button--interior .building-section-choice__icon {
+  color: var(--blue);
+  background: #e8edff;
+}
+
+.building-section-choice__button--exterior .building-section-choice__icon {
+  color: var(--orange);
+  background: #ffe6cc;
+}
+
+.building-section-choice__copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.building-section-choice__copy strong {
+  font-size: 1rem;
+}
+
+.building-section-choice__copy small {
+  color: var(--muted);
+  font-size: 0.73rem;
+  line-height: 1.35;
+}
+
+.building-section-choice__copy > span {
+  color: var(--ink);
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.room-page-mobile {
+  padding-top: 14px;
+}
+
+.room-category-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #f4f6fa;
+}
+
+.room-category-tab {
+  display: grid;
+  min-height: 54px;
+  gap: 2px;
+  place-items: center;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 10px;
+  color: var(--muted);
+  background: transparent;
+  cursor: pointer;
+}
+
+.room-category-tab span {
+  font-weight: 850;
+}
+
+.room-category-tab small {
+  font-size: 0.68rem;
+}
+
+.room-category-tab.is-active {
+  color: #fff;
+  box-shadow: 0 5px 14px rgba(0, 18, 63, 0.16);
+}
+
+.room-category-tab--interior.is-active {
+  background: var(--blue);
+}
+
+.room-category-tab--exterior.is-active {
+  background: var(--orange);
+}
+
+.room-list-heading {
+  align-items: flex-end;
+}
+
+.room-add-button {
+  white-space: nowrap;
+}
+
+.room-toolbar--mobile-simple {
+  align-items: stretch;
+}
+
+.room-toolbar--mobile-simple .room-search-group {
+  flex: 1 1 240px;
+}
+
+.room-toolbar--mobile-simple .room-filter-button {
+  flex: 0 0 auto;
+}
+
+.room-filter-panel--mobile {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.room-filter-panel__title {
+  display: none;
+}
+
+.room-filter-reset {
+  align-self: end;
+}
+
+.mobile-room-card__name {
+  margin-top: 4px;
+}
+
+.mobile-room-card__location {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--canvas);
+}
+
+.mobile-room-card__location svg {
+  width: 20px;
+  height: 20px;
+  color: var(--blue);
+}
+
+.mobile-room-card__location span {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.mobile-room-card__location small {
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.mobile-room-card__location strong {
+  overflow: hidden;
+  font-size: 0.82rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mobile-room-card__progress {
+  display: flex;
+  min-width: 120px;
+  flex: 1;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-room-card__progress .progress-track {
+  flex: 1;
+}
+
+.trade-metric-strip .metric__label {
+  line-height: 1.25;
+}
+
+@media (max-width: 760px) {
+  .building-card__mobile-footer {
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .room-list-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .room-add-button {
+    width: 100%;
+  }
+
+  .room-filter-panel--mobile {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .room-filter-panel__title {
+    display: grid;
+    grid-column: 1 / -1;
+    gap: 2px;
+  }
+
+  .room-filter-reset {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .building-card--mobile-flow .building-card__project {
+    grid-template-columns: 88px minmax(0, 1fr) 18px;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .building-card--mobile-flow .building-card__image {
+    width: 88px;
+    height: 76px;
+  }
+
+  .building-card--mobile-flow .building-card__tap-hint {
+    font-size: 0.68rem;
+  }
+
+  .building-card__mobile-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .building-card__category-summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .building-category-pill {
+    justify-content: center;
+  }
+
+  .building-remove-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .room-page-mobile {
+    padding: 12px;
+  }
+
+  .room-category-switch {
+    position: sticky;
+    top: 74px;
+    z-index: 20;
+    margin: 0 -2px 14px;
+    box-shadow: 0 5px 14px rgba(0, 18, 63, 0.08);
+  }
+
+  .room-category-tab {
+    min-height: 50px;
+  }
+
+  .room-toolbar--mobile-simple {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .room-toolbar--mobile-simple .room-search-group {
+    min-width: 0;
+  }
+
+  .room-toolbar--mobile-simple .room-filter-button {
+    min-width: 48px;
+    padding: 9px 11px;
+  }
+
+  .room-toolbar--mobile-simple .room-filter-button > span:not(.count-pill) {
+    display: none;
+  }
+
+  .room-filter-panel--mobile {
+    grid-template-columns: 1fr;
+    padding: 12px;
+  }
+
+  .room-filter-panel--mobile .field {
+    gap: 5px;
+  }
+
+  .mobile-room-card .mobile-row-card__head {
+    align-items: flex-start;
+  }
+
+  .mobile-room-card__progress {
+    min-width: 96px;
+  }
+
+  .trade-metric-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .trade-metric-strip .metric:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 380px) {
+  .building-section-choice__button {
+    grid-template-columns: 42px minmax(0, 1fr) 18px;
+    padding: 11px;
+  }
+
+  .building-section-choice__icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .room-category-tab small {
+    font-size: 0.62rem;
+  }
+}

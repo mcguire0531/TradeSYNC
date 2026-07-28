@@ -22,16 +22,21 @@ Then open `http://localhost:4173` in the browser.
 
 ## Working features
 
+- Mobile-first Home, Rooms, Tasks, Inspections, Constraints, and More screens
 - Home dashboard with the supplied building imagery and project progress cards
+- Tapping a building opens a simple Interior or Exterior choice before the room list
 - Add an approved building by access code instead of manually entering project information
 - Demo access code `1234` adds **Cosner Tech - CAB** with its building name, address, date, and starting information
-- Separate Interior and Exterior location tabs for every building
+- Separate Interior and Exterior locations for every building
 - Interior and exterior locations maintain separate room lists unless the same location is deliberately added to both sections
 - Add locations and upload photos, plans, elevations, and other visual documentation
-- Add a room or work area to a specific interior or exterior location
+- Add an interior room or exterior work area only to a matching location type
 - Remove a building from My Buildings, including its locally stored rooms and task workspaces
-- Search, paginate, and filter rooms by location, floor, and status
+- Separate Interior and Exterior switches at the top of the Rooms page
+- Filter the selected section by wing/location, floor/level, and status
+- Search and paginate the selected Interior or Exterior room list
 - Open any room to review overall progress, trade progress, actual clashes, and recent activity
+- Room Overview summary cards count trades: Complete, Incomplete, Not Started, Total Trades, and actual Clashes
 - The room overview **Open Trade View** button always opens Trade View
 - Building and room dropdown selection at the top of the Tasks page
 - Matching Trade View and Turner View layouts with independent completion records
@@ -69,7 +74,13 @@ Turner View confirmation is used for room progress shown outside the Tasks page.
 
 ## Building location behavior
 
-Each building maintains distinct Interior and Exterior locations. A room is assigned to one specific location and appears only in that section. The room list can then be filtered by location, floor, and status. Locations with the same name are treated as separate records only when a user deliberately creates them in both sections.
+Tapping a building first asks the user to choose Interior or Exterior. The Rooms page then opens directly to that section. Interior and Exterior use separate location and room lists. The section switch is separate from the Wing / Location filter so a mobile user can change the broad building section first and then narrow the list by wing, floor, or status.
+
+A room is assigned to one specific location and appears only in that section. Locations with the same name are treated as separate records only when a user deliberately creates them in both sections.
+
+## Room overview behavior
+
+The Room Overview summary is based on trade records rather than task totals. Complete, Incomplete, Not Started, and Total Trades all count trades. Clashes count only real Trade View and Turner View task-status disagreements.
 
 ## Documentation behavior
 
