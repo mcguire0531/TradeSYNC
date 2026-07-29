@@ -1,6 +1,6 @@
 # TradeSYNC
 
-TradeSYNC is a working, responsive construction-coordination prototype built from the supplied screen designs. It combines building locations, room readiness, trade completion, tasks, building-wide inspections, real status clashes, and constraints in one installable web app.
+TradeSYNC is a working, responsive construction-coordination prototype built from the supplied screen designs. It combines building locations, room readiness, trade completion, tasks, inspections, real status clashes, and constraints in one installable web app.
 
 ## Open the app
 
@@ -48,11 +48,13 @@ Then open `http://localhost:4173` in the browser.
 - A trade marked complete in an interface is always shown at 100 percent in that interface
 - Add tasks, include an initial comment, and update task status
 - Open any task to review its permanent comment thread and add more comments
-- Add optional images to task comments and initial task documentation
+- Save private comment drafts for task comments, inspection comments, constraint comments, and new-task notes
+- Comment drafts restore when the same record is reopened and are not added to the permanent record until submitted
+- Upload comment images with visible previews before submitting
+- Paste screenshots directly into a comment text box with Ctrl+V or Cmd+V
+- Remove an image from a draft before submitting the comment
+- Inspection records and totals are building-wide, with no room assignment
 - Choose a building on the Inspections page
-- Inspection totals, trades, and detailed records are limited to the selected building
-- Inspections are building-wide and are never assigned to an individual room or exterior work area
-- New inspections are permanently assigned to their selected building
 - Inspection comments remain in the record after an inspection passes
 - Add optional images to inspection comments
 - Choose a building on the Constraints page
@@ -66,7 +68,7 @@ Then open `http://localhost:4173` in the browser.
 - Constraints use Schedule, Resource, Coordination, Design, Material, or Access types; Clash is tracked separately
 - Add, resolve, and reopen constraints without deleting their documentation
 - Messages and notifications panels
-- Export all prototype data as JSON
+- Export all submitted prototype data as JSON
 - Reset the app to its original demonstration data
 - Browser local-storage persistence
 - Responsive layouts for phones, tablets, and desktop browsers
@@ -86,21 +88,25 @@ A room is assigned to one specific location and appears only in that section. Lo
 
 ## Building records
 
-Constraints are assigned to a building and are not connected to a room. The Constraints page filters every active and resolved record by the selected building.
-
-Inspections are assigned only to a building. Changing the building on the Inspections page changes all totals, trade summaries, detailed records, and newly created inspections. No inspection record contains a room assignment.
+Constraints and inspections are assigned to a building and are not connected to a room. The Constraints and Inspections pages filter every active, resolved, passed, failed, and pending record by the selected building.
 
 ## Room overview behavior
 
 The Room Overview summary is based on trade records rather than task totals. Complete, Incomplete, Not Started, and Total Trades all count trades. Clashes count only real Trade View and Turner View task-status disagreements.
 
+## Comment drafts and image behavior
+
+Task, inspection, and constraint comment forms support private drafts. Draft text and compressed images are saved locally in the current browser. Closing a comment window does not submit the draft. Selecting **Submit Comment** adds the text and images to the permanent project record and then clears that draft.
+
+Screenshots can be pasted directly while the cursor is inside a comment text box. Standard image selection and drag-and-drop are also supported. Draft images appear as removable previews before submission. A comment can include up to four JPG, PNG, WEBP, or GIF images, with an 8 MB maximum original size per image.
+
 ## Documentation behavior
 
-Comments and image attachments are append-only documentation in the prototype. Passing an inspection, completing a task, completing a trade, resolving a clash, or resolving a constraint does not remove prior comments or images.
+Submitted comments and image attachments are append-only documentation in the prototype. Passing an inspection, completing a task, completing a trade, resolving a clash, or resolving a constraint does not remove prior submitted comments or images. Draft comments remain private and separate until submitted.
 
 ## How the prototype stores information
 
-Changes and compressed image attachments are saved in the browser on the device being used. They are not yet shared between different users or devices. The **More** page can export the current data or reset the prototype.
+Changes, comment drafts, and compressed image attachments are saved in the browser on the device being used. They are not yet shared between different users or devices. The **More** page can export submitted project data or reset the prototype. Drafts are intentionally excluded from submitted project data until the user submits them.
 
 A production version would normally add:
 

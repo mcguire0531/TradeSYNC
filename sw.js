@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tradesync-v8';
+const CACHE_NAME = 'tradesync-v9';
 const APP_SHELL = [
   './',
   './index.html',
@@ -12,6 +12,7 @@ const APP_SHELL = [
   './css/08-building-tabs-room-filters-resolved.css',
   './css/09-mobile-building-room-flow.css',
   './css/10-building-record-scope.css',
+  './css/11-comment-drafts.css',
   './js/01-foundation.js',
   './js/02-data-state.js',
   './js/03-shell-home.js',
@@ -49,6 +50,10 @@ const APP_SHELL = [
   './js/14b-building-constraints.js',
   './js/14c-building-inspections.js',
   './js/15-building-only-inspections.js',
+  './js/16a-comment-draft-store.js',
+  './js/16b-comment-draft-images.js',
+  './js/16c-comment-draft-submit.js',
+  './js/16d-comment-draft-events.js',
   './manifest.webmanifest',
   './assets/tradesync-icon.svg',
   './assets/building-riverside.jpg',
