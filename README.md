@@ -1,6 +1,6 @@
 # TradeSYNC
 
-TradeSYNC is a working, responsive construction-coordination prototype built from the supplied screen designs. It combines building locations, room readiness, trade completion, tasks, inspections, real status clashes, and constraints in one installable web app.
+TradeSYNC is a working, responsive construction-coordination prototype built from the supplied screen designs. It combines building locations, room readiness, trade completion, tasks, building-wide inspections, real status clashes, and constraints in one installable web app.
 
 ## Open the app
 
@@ -49,9 +49,10 @@ Then open `http://localhost:4173` in the browser.
 - Add tasks, include an initial comment, and update task status
 - Open any task to review its permanent comment thread and add more comments
 - Add optional images to task comments and initial task documentation
-- Choose a building and then a room/work area on the Inspections page
-- Inspection totals and trade records are limited to the selected building and room/work area
-- New inspections are permanently assigned to their selected building and room/work area
+- Choose a building on the Inspections page
+- Inspection totals, trades, and detailed records are limited to the selected building
+- Inspections are building-wide and are never assigned to an individual room or exterior work area
+- New inspections are permanently assigned to their selected building
 - Inspection comments remain in the record after an inspection passes
 - Add optional images to inspection comments
 - Choose a building on the Constraints page
@@ -87,7 +88,7 @@ A room is assigned to one specific location and appears only in that section. Lo
 
 Constraints are assigned to a building and are not connected to a room. The Constraints page filters every active and resolved record by the selected building.
 
-Inspections are assigned to both a building and a room or exterior work area. Changing the building on the Inspections page changes the available room list and prevents inspection records from different buildings from being mixed together.
+Inspections are assigned only to a building. Changing the building on the Inspections page changes all totals, trade summaries, detailed records, and newly created inspections. No inspection record contains a room assignment.
 
 ## Room overview behavior
 

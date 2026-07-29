@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tradesync-v7';
+const CACHE_NAME = 'tradesync-v8';
 const APP_SHELL = [
   './',
   './index.html',
@@ -48,6 +48,7 @@ const APP_SHELL = [
   './js/14a-building-record-scope.js',
   './js/14b-building-constraints.js',
   './js/14c-building-inspections.js',
+  './js/15-building-only-inspections.js',
   './manifest.webmanifest',
   './assets/tradesync-icon.svg',
   './assets/building-riverside.jpg',
