@@ -1,0 +1,329 @@
+/* TradeSYNC readiness engine, verification, handoff, gate, impact, and quick-update UI. */
+
+.hero-row--workflow {
+  align-items: center;
+}
+
+.hero-row__actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.portfolio-readiness,
+.turner-action-center,
+.verification-core-panel,
+.category-readiness-strip,
+.room-readiness-card,
+.inspection-gate-panel {
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 5px 18px rgba(0, 18, 63, 0.06);
+}
+
+.portfolio-readiness {
+  padding: 16px;
+  background: linear-gradient(135deg, #f6f8ff, #fff 68%);
+}
+
+.portfolio-readiness__head {
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.portfolio-readiness__head p {
+  margin-top: 4px;
+}
+
+.portfolio-readiness__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.portfolio-readiness__metric {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.portfolio-readiness__metric strong {
+  color: var(--navy);
+  font-size: 1.35rem;
+}
+
+.portfolio-readiness__metric span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 750;
+}
+
+.portfolio-readiness__metric--ready {
+  border-color: #a7dfb3;
+  background: #f1fbf3;
+}
+
+.portfolio-readiness__metric--ready strong {
+  color: var(--green);
+}
+
+.portfolio-readiness__metric--blocked {
+  border-color: #ffc1c6;
+  background: #fff5f6;
+}
+
+.portfolio-readiness__metric--blocked strong {
+  color: var(--red);
+}
+
+.portfolio-readiness__metric--risk {
+  border-color: #ffd08c;
+  background: #fff9ed;
+}
+
+.portfolio-readiness__metric--risk strong {
+  color: #a45200;
+}
+
+.turner-action-center {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 15px;
+  border-color: #b7c3ff;
+  background: linear-gradient(135deg, #eef2ff, #fff);
+}
+
+.turner-action-center__copy {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.turner-action-center__copy h2 {
+  margin-bottom: 4px;
+}
+
+.turner-action-center__icon {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--blue);
+}
+
+.turner-action-center__counts {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.turner-action-center__counts span {
+  display: grid;
+  gap: 2px;
+  min-width: 76px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  text-align: center;
+}
+
+.turner-action-center__counts strong {
+  color: var(--navy);
+  font-size: 1rem;
+}
+
+.building-card--readiness .building-card__content {
+  gap: 3px;
+}
+
+.readiness-mini-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.readiness-mini {
+  display: inline-flex;
+  padding: 4px 7px;
+  align-items: center;
+  gap: 3px;
+  border-radius: 999px;
+  font-size: 0.63rem;
+  font-weight: 750;
+}
+
+.readiness-mini--green {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.readiness-mini--red {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.readiness-mini--yellow {
+  color: #9a4c00;
+  background: #fff1d8;
+}
+
+.readiness-pill {
+  display: inline-flex;
+  min-height: 30px;
+  padding: 6px 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.readiness-pill__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.readiness-pill--compact {
+  min-height: 24px;
+  padding: 4px 7px;
+  font-size: 0.64rem;
+}
+
+.readiness-pill--green {
+  border-color: #9ed5a8;
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.readiness-pill--blue {
+  border-color: #aebcff;
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.readiness-pill--purple {
+  border-color: #d3b1f8;
+  color: #6f24c5;
+  background: #f5edff;
+}
+
+.readiness-pill--orange {
+  border-color: #ffbd78;
+  color: #a44200;
+  background: #fff0df;
+}
+
+.readiness-pill--yellow {
+  border-color: #ffd08a;
+  color: #945000;
+  background: #fff7e5;
+}
+
+.readiness-pill--red {
+  border-color: #ffb7bd;
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.readiness-pill--navy {
+  border-color: #c9d0df;
+  color: var(--navy);
+  background: #f1f3f7;
+}
+
+.category-readiness-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 13px 15px;
+  background: linear-gradient(135deg, #f7f9ff, #fff);
+}
+
+.category-readiness-strip > div:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+.category-readiness-strip__metrics {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 0.74rem;
+}
+
+.room-readiness-card {
+  padding: 17px;
+  border-width: 1px 1px 1px 5px;
+}
+
+.room-readiness-card--green { border-left-color: var(--green); }
+.room-readiness-card--blue { border-left-color: var(--blue); }
+.room-readiness-card--purple { border-left-color: #8e35f0; }
+.room-readiness-card--orange { border-left-color: var(--orange); }
+.room-readiness-card--yellow { border-left-color: #d58500; }
+.room-readiness-card--red { border-left-color: var(--red); }
+.room-readiness-card--navy { border-left-color: var(--navy); }
+
+.room-readiness-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 13px;
+}
+
+.room-readiness-card__status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.room-readiness-card__status h2 {
+  margin: 2px 0 0;
+}
+
+.room-readiness-card__icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--navy);
+  background: var(--blue-soft);
+}
+
+.room-readiness-card--red .room-readiness-card__icon {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.room-readiness-card--green .room-readiness-card__icon {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.room-readiness-card__score {
+  display: grid;
+  min-width: 90px;
+  gap: 2px;
+  text-align: right;
+}

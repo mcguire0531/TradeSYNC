@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tradesync-v9';
+const CACHE_NAME = 'tradesync-v10';
 const APP_SHELL = [
   './',
   './index.html',
@@ -13,6 +13,10 @@ const APP_SHELL = [
   './css/09-mobile-building-room-flow.css',
   './css/10-building-record-scope.css',
   './css/11-comment-drafts.css',
+  './css/12-readiness-workflow-1.css',
+  './css/12-readiness-workflow-2.css',
+  './css/12-readiness-workflow-3.css',
+  './css/12-readiness-workflow-4.css',
   './js/01-foundation.js',
   './js/02-data-state.js',
   './js/03-shell-home.js',
@@ -54,6 +58,13 @@ const APP_SHELL = [
   './js/16b-comment-draft-images.js',
   './js/16c-comment-draft-submit.js',
   './js/16d-comment-draft-events.js',
+  './js/17a1-readiness-data.js',
+  './js/17a2-readiness-engine.js',
+  './js/17b1-readiness-screens.js',
+  './js/17b2-impact-gate-ui.js',
+  './js/17b3-quick-update-ui.js',
+  './js/17c1-handoff-impact-actions.js',
+  './js/17c2-quick-update-actions.js',
   './manifest.webmanifest',
   './assets/tradesync-icon.svg',
   './assets/building-riverside.jpg',

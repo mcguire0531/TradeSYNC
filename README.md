@@ -1,6 +1,6 @@
 # TradeSYNC
 
-TradeSYNC is a working, responsive construction-coordination prototype built from the supplied screen designs. It combines building locations, room readiness, trade completion, tasks, inspections, real status clashes, and constraints in one installable web app.
+TradeSYNC is a working, responsive construction-coordination prototype built from the supplied screen designs. It combines building locations, room readiness, independent trade and Turner verification, tasks, trade handoffs, building-wide inspection gates, actual status clashes, constraints, documentation, and fast mobile field updates in one installable web app.
 
 ## Open the app
 
@@ -12,7 +12,7 @@ Open `index.html` in a modern browser.
 
 ### Recommended local option
 
-Running a small local web server enables the installable/offline features:
+Running a small local web server enables the installable and offline features:
 
 ```bash
 python -m http.server 4173
@@ -20,109 +20,142 @@ python -m http.server 4173
 
 Then open `http://localhost:4173` in the browser.
 
-## Working features
+## Core workflow improvements
+
+### 1. Independent Trade and Turner verification
+
+- Trade View and Turner View use the same task list but keep separate status records.
+- Every status change records the view, prior status, new status, user, source, and time.
+- A clash exists only when the actual saved Trade and Turner statuses disagree.
+- Clashes can be corrected by applying the verified Trade or Turner status to both records.
+- The Tasks screen shows a verification summary and the latest verification activity for each task.
+
+### 2. Room-readiness engine
+
+Each room or exterior work area receives a live readiness status and readiness score calculated from:
+
+- Turner-confirmed trade completion
+- Trade/Turner verification clashes
+- Active constraints and their actual affected scope
+- Required inspection gates
+- Requested or rejected trade handoffs
+- Overdue actions
+
+Readiness states are:
+
+- Not Started
+- In Progress
+- At Risk
+- Ready for Inspection
+- Ready for Next Trade
+- Blocked
+- Turnover Ready
+
+The room overview shows the reason for the status and the next best action. Home and building cards summarize ready, blocked, and at-risk locations.
+
+### 3. Trade-to-trade handoffs
+
+- A completed trade can request a handoff to the next trade.
+- The request includes an acceptance date, note, and optional photos.
+- The receiving trade can accept the handoff or return it for correction.
+- A rejected handoff blocks readiness until the condition is corrected and resubmitted.
+- Handoff history remains attached to the room for documentation.
+
+### 4. Constraints show actual impact
+
+Constraints remain building-level records, but now capture the work they affect:
+
+- Actual impact type
+- Entire building, Interior/Exterior section, wing/location, or specific room/work area
+- Affected trades
+- Estimated delay days
+- Stage affected: handoff, inspection, turnover, or all readiness stages
+- Whether the constraint blocks readiness
+
+Resolving a constraint requires confirmation and a resolution note. Optional proof images can be attached. Once confirmed, the constraint moves to the Turner-blue Resolved section and readiness recalculates.
+
+### 5. Inspections operate as readiness gates
+
+- Inspections remain building-wide and are never assigned to an individual room.
+- An inspection can be marked as a required readiness gate.
+- Gates are assigned to Structure/Shell, MEP Rough-In, Close-In, Finishes, or Turnover.
+- Failed or pending required gates can block room readiness.
+- The Inspections page includes a readiness-gate dashboard showing passed, failed, and pending gates.
+
+### 6. Effortless field participation for trade partners and Turner
+
+Quick Update provides one mobile workflow for both sides:
+
+1. Choose Trade Partner or Turner.
+2. Confirm building and room/work area.
+3. Choose a trade and task or the entire trade scope.
+4. Tap Complete, In Progress, or Not Started.
+5. Add a note, photo, pasted screenshot, or dictated text.
+6. Submit.
+
+Additional fast-entry support includes:
+
+- Project and room quick codes
+- QR-ready room links with camera scanning on supported browsers
+- A Turner Action Center that opens the next verification, failed gate, or handoff action
+- One-tap access from Home, Tasks, and Room Readiness
+- Existing offline browser storage and installable PWA behavior
+
+### 9. Screen improvements
+
+- **Home:** portfolio readiness, Turner Action Center, Quick Update, and readiness summaries on each building.
+- **Rooms:** Interior/Exterior stays simple, with a section readiness summary above the existing filters.
+- **Room Overview:** readiness score, blockers, next action, verification, and handoffs.
+- **Tasks:** independent verification summary, actual clashes, audit history, Quick Update, and handoffs.
+- **Inspections:** building selector plus a required-gate dashboard.
+- **Constraints:** impact badges, affected scope, delay, readiness effect, and confirmed resolution.
+- **Comments:** drafts, image previews, pasted screenshots, and permanent submitted documentation.
+
+## Existing app behavior retained
 
 - Mobile-first Home, Rooms, Tasks, Inspections, Constraints, and More screens
-- Home dashboard with the supplied building imagery and project progress cards
-- Tapping a building opens a simple Interior or Exterior choice before the room list
-- Add an approved building by access code instead of manually entering project information
-- Demo access code `1234` adds **Cosner Tech - CAB** with its building name, address, date, and starting information
-- Separate Interior and Exterior locations for every building
-- Interior and exterior locations maintain separate room lists unless the same location is deliberately added to both sections
-- Add locations and upload photos, plans, elevations, and other visual documentation
-- Add an interior room or exterior work area only to a matching location type
-- Remove a building from My Buildings, including its locally stored rooms, task workspaces, inspections, and constraints
-- Separate Interior and Exterior switches at the top of the Rooms page
-- Filter the selected section by wing/location, floor/level, and status
-- Search and paginate the selected Interior or Exterior room list
-- Open any room to review overall progress, trade progress, actual clashes, and recent activity
-- Room Overview summary cards count trades: Complete, Incomplete, Not Started, Total Trades, and actual Clashes
-- The room overview **Open Trade View** button always opens Trade View
-- Building and room dropdown selection at the top of the Tasks page
-- Matching Trade View and Turner View layouts with independent completion records
-- Shared tasks automatically appear in both Trade View and Turner View
-- Trade/Turner status disagreements automatically create real task clashes from the saved status records
-- Open a clash record, compare both statuses, and correct it by applying either verified status to both interfaces
-- Open any trade to review its tasks, change each individual task status, and add a task directly to that trade
-- Mark a trade complete or reopen it independently in either interface
-- A trade marked complete in an interface is always shown at 100 percent in that interface
-- Add tasks, include an initial comment, and update task status
-- Open any task to review its permanent comment thread and add more comments
-- Save private comment drafts for task comments, inspection comments, constraint comments, and new-task notes
-- Comment drafts restore when the same record is reopened and are not added to the permanent record until submitted
-- Upload comment images with visible previews before submitting
-- Paste screenshots directly into a comment text box with Ctrl+V or Cmd+V
-- Remove an image from a draft before submitting the comment
-- Inspection records and totals are building-wide, with no room assignment
-- Choose a building on the Inspections page
-- Inspection comments remain in the record after an inspection passes
-- Add optional images to inspection comments
-- Choose a building on the Constraints page
-- Constraints are building-wide records and are never assigned to an individual room
-- Constraint page grouped visually by Critical Path, Moderate, and Low priority
-- Active constraints remain in their priority section
-- Selecting Resolve moves the constraint into a dedicated Turner-blue Resolved section for that building
-- Reopening a resolved constraint moves it back to its active priority section
-- Click a constraint to open its building, description, images, comments, owner, and resolve-by date
-- Add optional images while creating a constraint or adding a constraint comment
-- Constraints use Schedule, Resource, Coordination, Design, Material, or Access types; Clash is tracked separately
-- Add, resolve, and reopen constraints without deleting their documentation
-- Messages and notifications panels
-- Export all submitted prototype data as JSON
-- Reset the app to its original demonstration data
-- Browser local-storage persistence
-- Responsive layouts for phones, tablets, and desktop browsers
-- Web-app manifest and offline application shell
+- Tapping a building asks the user to choose Interior or Exterior
+- Interior and Exterior maintain separate locations and room lists
+- Add approved buildings by access code; demo code `1234` adds **Cosner Tech - CAB**
+- Add locations, rooms, exterior work areas, photos, plans, and elevations
+- Remove a building and its locally stored rooms, tasks, inspections, constraints, handoffs, and quick-update records
+- Building and room dropdowns on Tasks
+- Individual task status controls for every trade
+- Building-wide inspections and constraints
+- Turner-blue Resolved constraints section
+- Permanent comments and image documentation
+- Comment drafts, image uploads, screenshot paste, and drag-and-drop
+- Export submitted project data as JSON
+- Reset demonstration data
 
 ## Clash behavior
 
-Clashes are calculated from the actual saved task status fields. Trade View and Turner View share the same task but keep separate status records. A clash exists only while those statuses differ. Correcting a clash applies the selected verified status to both records, removes the mismatch, recalculates the room, and adds an automatic documentation comment explaining the correction.
+Clashes are calculated from actual saved task status fields. Trade View and Turner View share the same task but keep separate status records. A clash exists only while those statuses differ. Correcting a clash applies the selected verified status to both records, removes the mismatch, recalculates readiness, and adds permanent documentation.
 
-Turner View confirmation is used for room progress shown outside the Tasks page.
-
-## Building location behavior
-
-Tapping a building first asks the user to choose Interior or Exterior. The Rooms page then opens directly to that section. Interior and Exterior use separate location and room lists. The section switch is separate from the Wing / Location filter so a mobile user can change the broad building section first and then narrow the list by wing, floor, or status.
-
-A room is assigned to one specific location and appears only in that section. Locations with the same name are treated as separate records only when a user deliberately creates them in both sections.
-
-## Building records
-
-Constraints and inspections are assigned to a building and are not connected to a room. The Constraints and Inspections pages filter every active, resolved, passed, failed, and pending record by the selected building.
-
-## Room overview behavior
-
-The Room Overview summary is based on trade records rather than task totals. Complete, Incomplete, Not Started, and Total Trades all count trades. Clashes count only real Trade View and Turner View task-status disagreements.
-
-## Comment drafts and image behavior
-
-Task, inspection, and constraint comment forms support private drafts. Draft text and compressed images are saved locally in the current browser. Closing a comment window does not submit the draft. Selecting **Submit Comment** adds the text and images to the permanent project record and then clears that draft.
-
-Screenshots can be pasted directly while the cursor is inside a comment text box. Standard image selection and drag-and-drop are also supported. Draft images appear as removable previews before submission. A comment can include up to four JPG, PNG, WEBP, or GIF images, with an 8 MB maximum original size per image.
+Turner View remains the official room-progress record shown outside the Tasks page.
 
 ## Documentation behavior
 
-Submitted comments and image attachments are append-only documentation in the prototype. Passing an inspection, completing a task, completing a trade, resolving a clash, or resolving a constraint does not remove prior submitted comments or images. Draft comments remain private and separate until submitted.
+Submitted comments, images, verification history, handoff history, constraint resolution notes, and inspection results are preserved. Completing work, passing an inspection, correcting a clash, accepting a handoff, or resolving a constraint does not delete prior documentation.
 
-## How the prototype stores information
+Draft comments remain private in the current browser until submitted.
 
-Changes, comment drafts, and compressed image attachments are saved in the browser on the device being used. They are not yet shared between different users or devices. The **More** page can export submitted project data or reset the prototype. Drafts are intentionally excluded from submitted project data until the user submits them.
+## Prototype storage
 
-A production version would normally add:
+Changes, drafts, and compressed image attachments are saved in the browser on the device being used. They are not yet shared between devices or users. A production version would normally add:
 
 - Company sign-in and role-based permissions
 - A shared cloud database
-- Secure cloud photo, drawing, and attachment storage
-- Server-managed building access codes
+- Secure cloud photo, drawing, audio, and attachment storage
+- Server-managed building and QR access codes
 - Real-time updates and push notifications
-- Audit history and reporting
-- Integrations with existing project-management systems
+- Audit reporting and integrations with existing project-management systems
 
 ## Project files
 
 - `index.html` — app entry point
 - `css/` — responsive TradeSYNC interface styles
-- `js/` — screens, sample data, navigation, and interactions
+- `js/` — screens, data, readiness rules, navigation, and interactions
 - `manifest.webmanifest` — installable web-app information
 - `sw.js` — offline application-shell cache
-- `assets/` — TradeSYNC icon and building images extracted from the supplied design references
+- `assets/` — TradeSYNC icon and supplied building imagery

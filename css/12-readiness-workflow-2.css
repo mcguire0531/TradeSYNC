@@ -1,0 +1,344 @@
+.room-readiness-card__score strong {
+  color: var(--navy);
+  font-size: 1.35rem;
+}
+
+.room-readiness-card__score span {
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.room-readiness-card__reasons {
+  display: grid;
+  gap: 6px;
+  margin: 13px 0;
+  padding-left: 20px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.room-readiness-card__action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 0.78rem;
+}
+
+.verification-core-panel {
+  padding: 16px;
+  border-color: #bdc7ff;
+  background: linear-gradient(135deg, #f1f4ff, #fff);
+}
+
+.verification-core-panel__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 13px;
+}
+
+.verification-core-panel__head h2 {
+  margin: 3px 0 0;
+}
+
+.verification-core-panel__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.verification-core-panel__grid > div,
+.verification-core-panel__grid > button {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  color: inherit;
+  background: #fff;
+  text-align: left;
+}
+
+.verification-core-panel__grid > button {
+  cursor: pointer;
+}
+
+.verification-core-panel__grid > button:hover {
+  border-color: var(--orange);
+  background: var(--orange-soft);
+}
+
+.verification-core-panel__grid span,
+.verification-core-panel__grid small {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.verification-core-panel__grid strong {
+  color: var(--navy);
+  font-size: 1.2rem;
+}
+
+.verification-audit-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: 0.69rem;
+}
+
+.verification-audit-line svg {
+  width: 15px;
+  height: 15px;
+}
+
+.handoff-panel {
+  background: linear-gradient(135deg, #fff, #f8faff);
+}
+
+.handoff-summary-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.handoff-summary-row span {
+  padding: 6px 9px;
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--canvas);
+  font-size: 0.69rem;
+}
+
+.handoff-list {
+  display: grid;
+  gap: 10px;
+}
+
+.handoff-card {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 11px;
+  background: #fff;
+}
+
+.handoff-card--accepted { border-left-color: var(--green); }
+.handoff-card--rejected { border-left-color: var(--red); }
+.handoff-card--cancelled { border-left-color: var(--muted); opacity: 0.8; }
+
+.handoff-card__route {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+
+.handoff-card__route > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.handoff-card__route > svg {
+  width: 17px;
+  height: 17px;
+  color: var(--muted);
+}
+
+.handoff-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.handoff-card__meta span {
+  padding: 4px 7px;
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--canvas);
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+.handoff-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.76rem;
+}
+
+.handoff-card__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.handoff-empty {
+  padding: 18px 12px;
+}
+
+.handoff-detail-route {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid #d8e0ff;
+  border-radius: 12px;
+  background: #f5f7ff;
+}
+
+.handoff-detail-context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 11px 0;
+}
+
+.handoff-detail-context > span:not(.readiness-pill) {
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--muted);
+  background: var(--canvas);
+  font-size: 0.69rem;
+}
+
+.handoff-detail-note,
+.handoff-detail-status,
+.constraint-resolution-record {
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+}
+
+.handoff-detail-note p,
+.constraint-resolution-record p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.handoff-detail-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.handoff-detail-status span {
+  color: var(--muted);
+  font-size: 0.68rem;
+}
+
+.handoff-detail-status--accepted {
+  border-color: #a7dfb3;
+  background: var(--green-soft);
+}
+
+.handoff-detail-status--rejected {
+  border-color: #ffb7bd;
+  background: var(--red-soft);
+}
+
+.handoff-history {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.handoff-history > div {
+  display: grid;
+  gap: 3px;
+  padding: 10px;
+  border-left: 3px solid var(--blue);
+  background: var(--canvas);
+}
+
+.handoff-history span {
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.handoff-history p {
+  margin: 3px 0 0;
+  font-size: 0.74rem;
+}
+
+.handoff-response-choice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.handoff-response-choice label,
+.quick-role-switch label,
+.quick-status-grid label,
+.impact-trade-grid label {
+  position: relative;
+  cursor: pointer;
+}
+
+.handoff-response-choice input,
+.quick-role-switch input,
+.quick-status-grid input,
+.impact-trade-grid input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.handoff-response-choice span {
+  display: flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  font-weight: 800;
+}
+
+.handoff-response-choice input:checked + span {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.constraint-impact-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.constraint-impact-badges span {
+  display: inline-flex;
+  padding: 4px 7px;
+  align-items: center;
+  gap: 4px;
+  border-radius: 999px;
+  color: #33415f;
+  background: #eef1f7;
+  font-size: 0.65rem;
+  font-weight: 750;
+}
+
+.constraint-impact-badges span:first-child {
+  color: #9a3d00;
+  background: #fff0df;
+}
+
+.constraint-impact-badges__block {
+  color: var(--red) !important;
+  background: var(--red-soft) !important;
+}
