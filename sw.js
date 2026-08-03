@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tradesync-v10';
+const CACHE_NAME = 'tradesync-v11';
 const APP_SHELL = [
   './',
   './index.html',
@@ -17,6 +17,7 @@ const APP_SHELL = [
   './css/12-readiness-workflow-2.css',
   './css/12-readiness-workflow-3.css',
   './css/12-readiness-workflow-4.css',
+  './css/13-priority-progress-rollup.css',
   './js/01-foundation.js',
   './js/02-data-state.js',
   './js/03-shell-home.js',
@@ -65,6 +66,7 @@ const APP_SHELL = [
   './js/17b3-quick-update-ui.js',
   './js/17c1-handoff-impact-actions.js',
   './js/17c2-quick-update-actions.js',
+  './js/18-priority-progress-rollup.js',
   './manifest.webmanifest',
   './assets/tradesync-icon.svg',
   './assets/building-riverside.jpg',

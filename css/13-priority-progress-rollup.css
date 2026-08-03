@@ -1,0 +1,309 @@
+/* Constraint priority deadlines and direct room-to-building progress roll-up. */
+
+.constraint-resolve-by > span {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.constraint-resolve-by em {
+  display: inline-flex;
+  padding: 3px 6px;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-style: normal;
+  font-weight: 850;
+  line-height: 1;
+}
+
+.constraint-resolve-by--critical em {
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.constraint-resolve-by--moderate em {
+  color: #a44200;
+  background: var(--orange-soft);
+}
+
+.constraint-resolve-by--low em {
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.constraint-resolve-by--overdue strong,
+.constraint-resolve-by--today strong {
+  color: var(--red);
+}
+
+.constraint-resolve-by--urgent strong {
+  color: #a44200;
+}
+
+.constraint-priority-policy {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  margin: 14px 0;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.constraint-priority-policy--critical {
+  border-left-color: var(--red);
+  background: linear-gradient(135deg, #fff5f6, #fff);
+}
+
+.constraint-priority-policy--moderate {
+  border-left-color: var(--orange);
+  background: linear-gradient(135deg, #fff8ec, #fff);
+}
+
+.constraint-priority-policy--low {
+  border-left-color: var(--green);
+  background: linear-gradient(135deg, #f2fbf4, #fff);
+}
+
+.constraint-priority-policy--overdue,
+.constraint-priority-policy--today {
+  border-color: #ffb7bd;
+  border-left-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(239, 16, 28, 0.05);
+}
+
+.constraint-priority-policy__icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border-radius: 50%;
+  color: var(--navy);
+  background: var(--canvas);
+}
+
+.constraint-priority-policy__icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.constraint-priority-policy > div:nth-child(2) {
+  min-width: 0;
+}
+
+.constraint-priority-policy p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.constraint-priority-policy__date {
+  display: grid;
+  gap: 3px;
+  text-align: right;
+}
+
+.constraint-priority-policy__date span {
+  color: var(--muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.constraint-priority-policy__date strong {
+  white-space: nowrap;
+}
+
+.constraint-priority-date-help {
+  margin-top: 7px;
+  padding: 8px 9px;
+  border-radius: 8px;
+  background: var(--canvas);
+  line-height: 1.45;
+}
+
+.priority-date-field--critical .input {
+  border-color: #f0aab0;
+}
+
+.priority-date-field--moderate .input {
+  border-color: #f5c37a;
+}
+
+.priority-date-field--low .input {
+  border-color: #9fd6aa;
+}
+
+.building-progress-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.building-progress-label small {
+  color: var(--muted);
+  font-size: 0.66rem;
+  font-weight: 750;
+}
+
+.building-progress-label strong {
+  color: var(--navy);
+  font-size: 0.82rem;
+}
+
+.building-card--progress-rollup .progress-row {
+  margin-top: 1px;
+}
+
+.progress-rollup-card {
+  padding: 16px;
+  border: 1px solid #c9d3ff;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f4f7ff, #fff 70%);
+  box-shadow: 0 5px 18px rgba(0, 18, 63, 0.05);
+}
+
+.progress-rollup-card__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 13px;
+}
+
+.progress-rollup-card__head h2 {
+  margin: 3px 0 0;
+}
+
+.progress-rollup-card__formula {
+  display: inline-flex;
+  min-height: 28px;
+  padding: 5px 8px;
+  align-items: center;
+  border-radius: 999px;
+  color: var(--blue);
+  background: var(--blue-soft);
+  font-size: 0.68rem;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+.progress-rollup-card__rows {
+  display: grid;
+  gap: 10px;
+}
+
+.progress-rollup-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 0.8fr) minmax(180px, 1.3fr) 52px;
+  gap: 12px;
+  align-items: center;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+}
+
+.progress-rollup-row > span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.progress-rollup-row small {
+  color: var(--muted);
+  font-size: 0.65rem;
+  line-height: 1.35;
+}
+
+.progress-rollup-row > strong {
+  color: var(--navy);
+  text-align: right;
+}
+
+.progress-rollup-row--building {
+  border-color: #aebcff;
+  background: #f8f9ff;
+}
+
+.progress-rollup-card__note {
+  margin: 11px 0 0;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.4;
+}
+
+.progress-rollup-card--compact {
+  padding: 14px;
+}
+
+.progress-rollup-card--compact .progress-rollup-card__head h2 {
+  font-size: 1rem;
+}
+
+@media (max-width: 760px) {
+  .constraint-priority-policy {
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .constraint-priority-policy__icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .constraint-priority-policy__date {
+    grid-column: 1 / -1;
+    padding-top: 9px;
+    border-top: 1px solid var(--line);
+    text-align: left;
+  }
+
+  .progress-rollup-row {
+    grid-template-columns: minmax(0, 1fr) 48px;
+  }
+
+  .progress-rollup-row .progress-track {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  .progress-rollup-row > strong {
+    grid-column: 2;
+    grid-row: 1;
+  }
+}
+
+@media (max-width: 520px) {
+  .progress-rollup-card {
+    padding: 13px;
+  }
+
+  .progress-rollup-card__head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .progress-rollup-card__formula {
+    align-self: flex-start;
+  }
+
+  .progress-rollup-row {
+    padding: 10px;
+  }
+
+  .progress-rollup-card__note {
+    margin-top: 9px;
+  }
+
+  .constraint-resolve-by > span {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

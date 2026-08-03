@@ -63,7 +63,7 @@ The room overview shows the reason for the status and the next best action. Home
 
 ### 4. Constraints show actual impact
 
-Constraints remain building-level records, but now capture the work they affect:
+Constraints remain building-level records, but capture the work they affect:
 
 - Actual impact type
 - Entire building, Interior/Exterior section, wing/location, or specific room/work area
@@ -73,6 +73,16 @@ Constraints remain building-level records, but now capture the work they affect:
 - Whether the constraint blocks readiness
 
 Resolving a constraint requires confirmation and a resolution note. Optional proof images can be attached. Once confirmed, the constraint moves to the Turner-blue Resolved section and readiness recalculates.
+
+#### Priority-based Resolve By dates
+
+Constraint deadlines now follow a simple priority policy:
+
+- **Critical Path:** target resolution within 2 calendar days
+- **Moderate:** target resolution within 7 calendar days
+- **Low:** target resolution within 14 calendar days
+
+Changing the priority while creating a constraint automatically updates the Resolve By date. A user may choose an earlier date, but the app prevents a later date than the priority target. Existing active constraints are also limited to the maximum date allowed by their priority. Overdue and urgent dates are visually identified on the Constraints page.
 
 ### 5. Inspections operate as readiness gates
 
@@ -103,13 +113,32 @@ Additional fast-entry support includes:
 
 ### 9. Screen improvements
 
-- **Home:** portfolio readiness, Turner Action Center, Quick Update, and readiness summaries on each building.
+- **Home:** portfolio readiness, Turner Action Center, Quick Update, readiness summaries, and room-based building progress.
 - **Rooms:** Interior/Exterior stays simple, with a section readiness summary above the existing filters.
-- **Room Overview:** readiness score, blockers, next action, verification, and handoffs.
-- **Tasks:** independent verification summary, actual clashes, audit history, Quick Update, and handoffs.
+- **Room Overview:** readiness score, blockers, next action, verification, handoffs, and room-to-building progress roll-up.
+- **Tasks:** independent verification summary, actual clashes, audit history, Quick Update, handoffs, and direct progress correlation with the building.
 - **Inspections:** building selector plus a required-gate dashboard.
-- **Constraints:** impact badges, affected scope, delay, readiness effect, and confirmed resolution.
+- **Constraints:** impact badges, affected scope, delay, readiness effect, confirmed resolution, and priority-controlled Resolve By dates.
 - **Comments:** drafts, image previews, pasted screenshots, and permanent submitted documentation.
+
+## Direct room-to-building progress roll-up
+
+Room construction progress is based on the percentage of trades Turner has confirmed complete for that room or exterior work area.
+
+Building progress is calculated as the **equal average of every room and exterior work area in that building**:
+
+```text
+Building Progress = Sum of Room Progress Percentages / Number of Rooms and Work Areas
+```
+
+This same value is used consistently:
+
+- The Home building card shows the building's room-progress average.
+- The Room Overview shows the selected room beside the building roll-up.
+- The Tasks page shows the selected room's official progress and the resulting building progress.
+- Any Turner task-status change, corrected clash, Quick Update, added room, or removed building immediately recalculates the roll-up.
+
+Readiness remains a separate measurement. A building can have high construction progress while rooms remain Blocked or At Risk because of failed gates, constraints, rejected handoffs, or verification clashes.
 
 ## Existing app behavior retained
 
@@ -130,7 +159,7 @@ Additional fast-entry support includes:
 
 ## Clash behavior
 
-Clashes are calculated from actual saved task status fields. Trade View and Turner View share the same task but keep separate status records. A clash exists only while those statuses differ. Correcting a clash applies the selected verified status to both records, removes the mismatch, recalculates readiness, and adds permanent documentation.
+Clashes are calculated from actual saved task status fields. Trade View and Turner View share the same task but keep separate status records. A clash exists only while those statuses differ. Correcting a clash applies the selected verified status to both records, removes the mismatch, recalculates room and building progress, recalculates readiness, and adds permanent documentation.
 
 Turner View remains the official room-progress record shown outside the Tasks page.
 
@@ -155,7 +184,7 @@ Changes, drafts, and compressed image attachments are saved in the browser on th
 
 - `index.html` — app entry point
 - `css/` — responsive TradeSYNC interface styles
-- `js/` — screens, data, readiness rules, navigation, and interactions
+- `js/` — screens, data, readiness rules, priority deadlines, progress roll-up, navigation, and interactions
 - `manifest.webmanifest` — installable web-app information
 - `sw.js` — offline application-shell cache
 - `assets/` — TradeSYNC icon and supplied building imagery
