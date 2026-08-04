@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tradesync-v13';
+const CACHE_NAME = 'tradesync-v14';
 const APP_SHELL = [
   './',
   './index.html',
@@ -20,6 +20,7 @@ const APP_SHELL = [
   './css/13-priority-progress-rollup.css',
   './css/14-p6-schedule-sync.css',
   './css/15-create-building.css',
+  './css/16-smart-schedule-documents.css',
   './js/01-foundation.js',
   './js/02-data-state.js',
   './js/03-shell-home.js',
@@ -81,6 +82,11 @@ const APP_SHELL = [
   './js/19c2-p6-modals.js',
   './js/19c3-p6-events.js',
   './js/20-create-building.js',
+  './js/21a-smart-schedule-foundation.js',
+  './js/21b-smart-schedule-activity.js',
+  './js/21c-smart-schedule-pdf.js',
+  './js/21d-smart-schedule-files.js',
+  './js/21e-smart-schedule-ui.js',
   './manifest.webmanifest',
   './assets/tradesync-icon.svg',
   './assets/building-riverside.jpg',
