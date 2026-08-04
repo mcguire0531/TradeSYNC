@@ -1,0 +1,565 @@
+/* Primavera P6 schedule upload and synchronization UI. */
+
+.p6-schedule-panel {
+  padding: 16px;
+  border: 1px solid #b9c6ff;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #eef2ff, #fff 68%);
+  box-shadow: 0 5px 18px rgba(0, 18, 63, 0.07);
+}
+
+.p6-schedule-panel__header {
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr);
+  gap: 13px;
+  align-items: start;
+}
+
+.p6-schedule-panel__icon {
+  display: grid;
+  width: 52px;
+  height: 52px;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--blue);
+}
+
+.p6-schedule-panel__icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.p6-schedule-panel__header h2 {
+  margin: 3px 0 5px;
+}
+
+.p6-schedule-panel__status {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 15px;
+}
+
+.p6-schedule-panel__status > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.82);
+}
+
+.p6-schedule-panel__status span,
+.p6-result-details span {
+  color: var(--muted);
+  font-size: 0.64rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.p6-schedule-panel__status strong {
+  overflow: hidden;
+  font-size: 0.78rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.p6-schedule-panel__changes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.p6-schedule-panel__changes span {
+  display: inline-flex;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: #31416e;
+  background: #fff;
+  font-size: 0.67rem;
+  font-weight: 750;
+}
+
+.p6-schedule-panel__warning {
+  color: #9a3d00 !important;
+  background: var(--orange-soft) !important;
+}
+
+.p6-schedule-panel__empty {
+  display: flex;
+  min-height: 58px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  border: 1px dashed #aebcff;
+  border-radius: 11px;
+  color: var(--muted);
+  background: rgba(255, 255, 255, 0.58);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.p6-schedule-panel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.p6-building-sync {
+  display: inline-flex;
+  width: fit-content;
+  margin-top: 4px;
+  padding: 4px 7px;
+  align-items: center;
+  gap: 5px;
+  border-radius: 999px;
+  color: var(--blue);
+  background: var(--blue-soft);
+  font-size: 0.62rem;
+  font-weight: 800;
+}
+
+.p6-building-sync svg {
+  width: 14px;
+  height: 14px;
+}
+
+.p6-import-intro {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 12px;
+  border: 1px solid #d5ddff;
+  border-radius: 11px;
+  background: #f5f7ff;
+}
+
+.p6-import-intro > span {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--blue);
+}
+
+.p6-import-intro > div {
+  display: grid;
+  gap: 3px;
+}
+
+.p6-import-intro small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.p6-file-drop {
+  position: relative;
+  display: flex;
+  min-height: 92px;
+  padding: 14px;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 2px dashed #aebcff;
+  border-radius: 13px;
+  color: var(--blue);
+  background: linear-gradient(135deg, #f6f8ff, #fff);
+  cursor: pointer;
+}
+
+.p6-file-drop:hover {
+  border-color: var(--blue);
+  background: var(--blue-soft);
+}
+
+.p6-file-drop > svg {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+}
+
+.p6-file-drop > span {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.p6-file-drop small {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.p6-file-drop input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.p6-import-options {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: #fff;
+}
+
+.p6-import-options summary {
+  padding: 11px 12px;
+  color: var(--navy);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.p6-import-options[open] summary {
+  border-bottom: 1px solid var(--line);
+  background: var(--canvas);
+}
+
+.p6-import-options__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 11px;
+}
+
+.p6-import-status {
+  display: flex;
+  min-height: 42px;
+  padding: 10px 12px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  background: var(--canvas);
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.p6-import-status__dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--blue);
+}
+
+.p6-import-status--ready {
+  border-color: #a7dfb3;
+  color: var(--green);
+  background: var(--green-soft);
+}
+
+.p6-import-status--ready .p6-import-status__dot {
+  background: var(--green);
+}
+
+.p6-import-status--error {
+  border-color: #ffb7bd;
+  color: var(--red);
+  background: var(--red-soft);
+}
+
+.p6-import-status--error .p6-import-status__dot {
+  background: var(--red);
+}
+
+.p6-import-form[data-processing="true"] {
+  opacity: 0.82;
+}
+
+.p6-import-form[data-processing="true"] .p6-import-status__dot {
+  animation: p6-pulse 900ms ease-in-out infinite alternate;
+}
+
+@keyframes p6-pulse {
+  from { opacity: 0.25; transform: scale(0.75); }
+  to { opacity: 1; transform: scale(1.1); }
+}
+
+.p6-result-header {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px;
+  border: 1px solid #a7dfb3;
+  border-radius: 12px;
+  background: var(--green-soft);
+}
+
+.p6-result-header > span {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--green);
+}
+
+.p6-result-header > div {
+  display: grid;
+  gap: 3px;
+}
+
+.p6-result-header small {
+  color: var(--muted);
+}
+
+.p6-result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.p6-result-grid > div {
+  display: grid;
+  gap: 3px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  text-align: center;
+}
+
+.p6-result-grid strong {
+  color: var(--navy);
+  font-size: 1.2rem;
+}
+
+.p6-result-grid span {
+  color: var(--muted);
+  font-size: 0.66rem;
+}
+
+.p6-result-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.p6-result-details > div {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 9px;
+  border-radius: 9px;
+  background: var(--canvas);
+}
+
+.p6-result-details strong {
+  overflow: hidden;
+  font-size: 0.74rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.p6-result-warnings {
+  margin-top: 12px;
+  padding: 11px;
+  border: 1px solid #ffd08a;
+  border-radius: 10px;
+  color: #7d4200;
+  background: #fff8e9;
+}
+
+.p6-result-warnings ul {
+  display: grid;
+  gap: 4px;
+  margin: 7px 0 0;
+  padding-left: 19px;
+  font-size: 0.72rem;
+}
+
+.p6-result-copy {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  line-height: 1.5;
+}
+
+.p6-room-context {
+  padding: 14px;
+  border: 1px solid #b9c6ff;
+  border-left: 4px solid var(--blue);
+  border-radius: 13px;
+  background: linear-gradient(135deg, #f4f7ff, #fff);
+}
+
+.p6-room-context__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.p6-room-context__head h2 {
+  margin: 3px 0 0;
+  font-size: 1rem;
+}
+
+.p6-room-context__data-date {
+  display: inline-flex;
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--blue);
+  background: var(--blue-soft);
+  font-size: 0.65rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.p6-room-context__summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 10px 0;
+}
+
+.p6-room-context__summary span {
+  padding: 5px 8px;
+  border-radius: 999px;
+  color: var(--muted);
+  background: #fff;
+  font-size: 0.66rem;
+}
+
+.p6-room-context__activities {
+  display: grid;
+  gap: 7px;
+}
+
+.p6-room-context__activities > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 9px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: #fff;
+}
+
+.p6-room-context__activities span {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.p6-room-context__activities span:last-child {
+  text-align: right;
+}
+
+.p6-room-context__activities strong {
+  overflow: hidden;
+  font-size: 0.73rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.p6-room-context__activities small {
+  color: var(--muted);
+  font-size: 0.63rem;
+}
+
+.p6-room-context__complete {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px;
+  border-radius: 9px;
+  color: var(--green);
+  background: var(--green-soft);
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.p6-room-context--compact .p6-room-context__activities > div:nth-child(n + 3) {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .p6-schedule-panel__status {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .p6-import-options__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .p6-room-context__head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .p6-room-context__data-date {
+    align-self: flex-start;
+  }
+}
+
+@media (max-width: 560px) {
+  .p6-schedule-panel,
+  .p6-room-context {
+    padding: 12px;
+  }
+
+  .p6-schedule-panel__header {
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .p6-schedule-panel__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .p6-schedule-panel__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .p6-schedule-panel__actions .button {
+    width: 100%;
+  }
+
+  .p6-result-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .p6-result-details {
+    grid-template-columns: 1fr;
+  }
+
+  .p6-room-context__activities > div {
+    grid-template-columns: 1fr;
+  }
+
+  .p6-room-context__activities span:last-child {
+    text-align: left;
+  }
+}
+
+@media (max-width: 390px) {
+  .p6-schedule-panel__status {
+    grid-template-columns: 1fr;
+  }
+
+  .p6-result-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
