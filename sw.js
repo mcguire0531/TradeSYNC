@@ -1,4 +1,4 @@
-const CACHE_NAME = 'tradesync-v12';
+const CACHE_NAME = 'tradesync-v13';
 const APP_SHELL = [
   './',
   './index.html',
@@ -19,6 +19,7 @@ const APP_SHELL = [
   './css/12-readiness-workflow-4.css',
   './css/13-priority-progress-rollup.css',
   './css/14-p6-schedule-sync.css',
+  './css/15-create-building.css',
   './js/01-foundation.js',
   './js/02-data-state.js',
   './js/03-shell-home.js',
@@ -79,6 +80,7 @@ const APP_SHELL = [
   './js/19c1-p6-panels.js',
   './js/19c2-p6-modals.js',
   './js/19c3-p6-events.js',
+  './js/20-create-building.js',
   './manifest.webmanifest',
   './assets/tradesync-icon.svg',
   './assets/building-riverside.jpg',
