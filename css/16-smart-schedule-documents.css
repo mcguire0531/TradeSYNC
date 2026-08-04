@@ -1,0 +1,86 @@
+/* Searchable PDF, Excel, and smart schedule-document import. */
+
+.smart-schedule-file-types {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: -2px;
+}
+
+.smart-schedule-file-types span {
+  display: inline-flex;
+  min-height: 26px;
+  padding: 4px 8px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbd4ff;
+  border-radius: 999px;
+  color: var(--blue);
+  background: #f5f7ff;
+  font-size: 0.64rem;
+  font-weight: 850;
+}
+
+.smart-schedule-file-drop {
+  border-color: #8fa1ff;
+}
+
+.smart-schedule-file-drop:hover,
+.smart-schedule-file-drop:focus-within {
+  border-color: var(--blue);
+  background: #eef2ff;
+  box-shadow: 0 0 0 3px rgba(18, 55, 255, 0.08);
+}
+
+.smart-schedule-reader-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 12px;
+  border: 1px solid #d8e0ff;
+  border-radius: 11px;
+  color: #2f4071;
+  background: linear-gradient(135deg, #f7f9ff, #fff);
+}
+
+.smart-schedule-reader-note > svg {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  color: var(--blue);
+}
+
+.smart-schedule-reader-note > span {
+  display: grid;
+  gap: 3px;
+}
+
+.smart-schedule-reader-note small {
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 520px) {
+  .smart-schedule-file-types {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
+  }
+
+  .smart-schedule-file-types span {
+    padding: 4px 2px;
+    font-size: 0.58rem;
+  }
+
+  .smart-schedule-reader-note {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 370px) {
+  .smart-schedule-file-types {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
